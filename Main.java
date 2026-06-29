@@ -3,6 +3,7 @@ import java.util.Scanner;
 import option.Option;
 import inventory.Inventory;
 import product.Beverage;
+import product.HouseholdItem;
 
 public class Main {
     public static void main(String[] args) {
@@ -23,36 +24,39 @@ public class Main {
                     case 1:
                         boolean categoryStatus = true;
                         while (categoryStatus) {
-                            System.out.println("Category:");
+                            System.out.println("\nCategory Options:");
                             System.out.println("[1] Beverages\n[2] Snacks\n[3] Household Items\n[4] Exit");
-                            System.out.print("Choose Category: ");
+                            System.out.print("Select Category: ");
                             int choosenCategory = scan.nextInt();
                             
                             if (choosenCategory >0 && choosenCategory < 5 ) {
-                                   switch (choosenOption) {
+                                   switch (choosenCategory) {
                                     case 1:
-                                       Inventory addProduct = new Inventory();
-                                       Beverages.addProduct(scan, choosenCategory);
-                                       Beverages addBeverages = new Beverages();
+                                       Inventory beverageProduct = new Inventory();
+                                       beverageProduct.addProduct(scan, choosenCategory);
                                         break;
                                     case 2:
-                                        
+                                        Inventory snackProduct = new Inventory();
+                                        snackProduct.addProduct(scan, choosenCategory);
                                         break;
                                     case 3:
-                        
+                                        Inventory householdItemProduct = new Inventory();
+                                        householdItemProduct.addProduct(scan, choosenCategory);
                                          break;
                                     case 4:
-                                        status = false;
+                                        categoryStatus = false;
                                         break;
                                     }
                             } else {
                                 System.out.println("Notice: Invalid Input");
-                            }
+                            } 
+                            break;
                         }
-
                         break;
-                    case 2:
                         
+                    case 2:
+                        Inventory displayProduct = new Inventory();
+                        displayProduct.displayProduct();
                         break;
                     case 3:
                         
@@ -66,7 +70,7 @@ public class Main {
                 System.out.println("Notice: Invalid Input");
             }
         }
-
+        
             
         
 
