@@ -11,7 +11,11 @@ public class Inventory {
     public static ArrayList<Product> products = new ArrayList<>();
 
     public void addProduct(Scanner scan, int productCategory) {
-        int ID = 0;
+        int productID = 0;
+        for (Product prodID : products) {
+            productID = prodID.productID;
+        }
+        productID ++;
 
            System.out.println("\n=====Add Product=====");
            System.out.print("Product Quantity to add: ");
@@ -19,11 +23,9 @@ public class Inventory {
            scan.nextLine();
 
             for (int i = 0; i < productQuantity; i++) {
-                System.out.print("ProductID: ");
-                int productID = scan.nextInt();
-                scan.nextLine(); // consume leftover newline after nextInt()
                 System.out.print("Product " + (i + 1) + " name: ");
                 String productName = scan.nextLine();
+                
 
                 String productVolume = "";
                 String flavor = "";

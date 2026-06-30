@@ -1,9 +1,6 @@
 import java.util.Scanner;
 
-import option.Option;
 import inventory.Inventory;
-import product.Beverage;
-import product.HouseholdItem;
 
 public class Main {
     public static void main(String[] args) {
