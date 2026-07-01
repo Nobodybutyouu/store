@@ -1,6 +1,5 @@
 package product;
 
-import inventory.Inventory;
 
 public class HouseholdItem extends Product{
     private String materialType;

@@ -1,22 +1,28 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import option.Option;
 import inventory.Inventory;
-import product.Beverage;
-import product.HouseholdItem;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
         boolean status = true;
-
+        int choosenOption = 0;
         while (status) {
-            System.out.println("=====Product Inventory Management=====");
+            System.out.println("\n=====Product Inventory Management=====");
             System.out.println("Options:");
             System.out.println("[1] Add Product\n[2] Display Product\n[3] Search Product\n[4] Exit");
-            System.out.print("What would you like to do: ");
-            int choosenOption = scan.nextInt();
+
+            try {
+                 System.out.print("What would you like to do: ");
+                 choosenOption = scan.nextInt();
+                 
+            }catch (InputMismatchException inputMismatch){
+                System.out.println("Notice: Invalid Input");
+                scan.nextLine();
+            }
+
 
             if (choosenOption >0 && choosenOption < 5 ) {
 
@@ -26,8 +32,15 @@ public class Main {
                         while (categoryStatus) {
                             System.out.println("\nCategory Options:");
                             System.out.println("[1] Beverages\n[2] Snacks\n[3] Household Items\n[4] Exit");
-                            System.out.print("Select Category: ");
-                            int choosenCategory = scan.nextInt();
+                            int choosenCategory = 0;
+
+                            try {
+                                System.out.print("Select Category: ");
+                                choosenCategory = scan.nextInt();
+                            }catch (InputMismatchException inputMismatch){
+                                System.out.println("Notice: Invalid Input");
+                                scan.nextLine();
+                            }
                             
                             if (choosenCategory >0 && choosenCategory < 5 ) {
                                    switch (choosenCategory) {
@@ -47,10 +60,10 @@ public class Main {
                                         categoryStatus = false;
                                         break;
                                     }
-                            } else {
+                            }else if (choosenCategory <0 || choosenCategory > 4){
                                 System.out.println("Notice: Invalid Input");
                             } 
-                            break;
+                            
                         }
                         break;
                         
@@ -66,7 +79,7 @@ public class Main {
                         break;
 
             }
-            } else {
+            }else if (choosenOption < 0 || choosenOption > 4) {
                 System.out.println("Notice: Invalid Input");
             }
         }

@@ -1,6 +1,5 @@
 package product;
 
-import inventory.Inventory;
 
 public class Beverage extends Product{
     private String productVolume;

@@ -1,6 +1,5 @@
 package product;
 
-import inventory.Inventory;
 
 public class Snack extends Product {
     private String flavor;
