@@ -2,6 +2,8 @@ package inventory;
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
+
 import product.Product;
 import product.Snack;
 import product.Beverage;
@@ -17,10 +19,21 @@ public class Inventory {
         }
         productID ++;
 
-           System.out.println("\n=====Add Product=====");
-           System.out.print("Product Quantity to add: ");
-           int productQuantity = scan.nextInt();
-           scan.nextLine();
+        boolean status = true;
+        int productQuantity = 0;
+        boolean productSaved = false;
+        while (status) {  
+           try {
+            System.out.println("\n=====Add Product=====");
+            System.out.print("Product Quantity to add: ");
+            productQuantity = scan.nextInt();
+            scan.nextLine();
+            
+           }catch (InputMismatchException inputMismatch){
+            System.out.println("Notice: Invalid Input");
+            scan.nextLine();
+           }
+           
 
             for (int i = 0; i < productQuantity; i++) {
                 System.out.print("Product " + (i + 1) + " name: ");
@@ -41,8 +54,8 @@ public class Inventory {
                         flavor = scan.nextLine();
                         break;
                     case 3:
-                        boolean status = true;
-                        while (status) {
+                        boolean case3Status = true;
+                        while (case3Status) {
                             System.out.println("\nMaterial Type Options: ");
                             System.out.println("[1] Wooden\n[2] Plastic\n[3] Steel\n[4] Exit");
                             System.out.print("Select Material Type: ");
@@ -60,7 +73,7 @@ public class Inventory {
                                         materialType = "Steel";
                                         break;
                                     case 4:
-                                        status = false;
+                                        case3Status = false;
                                         break;
                                     
 
@@ -87,9 +100,21 @@ public class Inventory {
                         break;
                     case 3:
                         HouseholdItem addHouseholdItem =  new HouseholdItem(productID, productName,  materialType, productCategory, price, prodQuantity);
+                        break;
                 }
+                 System.out.println("*Product Saved*");
+                 productSaved = true;
+                
+                
+        }  
+        if (productSaved) {
+            break;
         }
-        System.out.println("*Product Saved*\n");
+       
+        
+        }
+
+           
         
     }
 
