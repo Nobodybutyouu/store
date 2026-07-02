@@ -5,11 +5,11 @@ import inventory.Inventory;
 public class Product {
     public int productID;
     public String productName;
-    public int productCategory;
+    public String productCategory;
     public double productPrice;
     public int productQuantity;
 
-    public Product (int productID, String productName, int productCategory, double productPrice, int productQuantity) {
+    public Product (int productID, String productName, String productCategory, double productPrice, int productQuantity) {
         this.productID = productID;
         this.productName = productName;
         this.productCategory = productCategory;

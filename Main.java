@@ -72,7 +72,13 @@ public class Main {
                         displayProduct.displayProduct();
                         break;
                     case 3:
+                        System.out.println("=====Search Product=====");
+                        System.out.print("Product Name: ");
+                        String productName = scan.nextLine();
+                        scan.nextLine();
                         
+                        Inventory searchProduct = new Inventory();
+                        searchProduct.searchProduct(productName);
                         break;
                     case 4:
                         status = false;

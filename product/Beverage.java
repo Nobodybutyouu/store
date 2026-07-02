@@ -4,7 +4,7 @@ package product;
 public class Beverage extends Product{
     private String productVolume;
     
-     public Beverage(int productID, String productName, String productVolume, int productCategory, double productPrice, int productQuantity) {
+     public Beverage(int productID, String productName, String productVolume, String productCategory, double productPrice, int productQuantity) {
         super(productID, productName, productCategory, productPrice, productQuantity);
         this.productVolume = productVolume;
 
