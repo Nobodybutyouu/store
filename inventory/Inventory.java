@@ -13,16 +13,18 @@ public class Inventory {
     public static ArrayList<Product> products = new ArrayList<>();
 
     public void addProduct(Scanner scan, int productCategory) {
-        int productID = 0;
-        for (Product prodID : products) {
-            productID = prodID.productID;
-        }
-        productID ++;
+        
 
         boolean status = true;
         int productQuantity = 0;
         boolean productSaved = false;
+        int productID = 0;
+        String stringCategory = "";
         while (status) {  
+
+            
+            
+
            try {
             System.out.println("\n=====Add Product=====");
             System.out.print("Product Quantity to add: ");
@@ -36,6 +38,12 @@ public class Inventory {
            
 
             for (int i = 0; i < productQuantity; i++) {
+
+                for (Product prodID : products) {
+                productID = prodID.productID;
+            }
+            productID ++;
+
                 System.out.print("Product " + (i + 1) + " name: ");
                 String productName = scan.nextLine();
                 
@@ -46,14 +54,17 @@ public class Inventory {
 
                 switch(productCategory) {
                     case 1:
+                        stringCategory = "Beverages";
                         System.out.print("Product Volume: ");
                         productVolume = scan.nextLine();
                         break;
                     case 2:
+                        stringCategory = "Snack";
                         System.out.print("Flavor: ");
                         flavor = scan.nextLine();
                         break;
                     case 3:
+                        stringCategory = "Household Item";
                         boolean case3Status = true;
                         while (case3Status) {
                             System.out.println("\nMaterial Type Options: ");
@@ -93,13 +104,13 @@ public class Inventory {
 
                 switch(productCategory) {
                     case 1:
-                        Beverage addBeverage = new Beverage(productID, productName,  productVolume, productCategory, price, prodQuantity);
+                        Beverage addBeverage = new Beverage(productID, productName,  productVolume, stringCategory, price, prodQuantity);
                         break;
                     case 2:
-                        Snack addSnack = new Snack(productID, productName,  flavor, productCategory, price, prodQuantity);
+                        Snack addSnack = new Snack(productID, productName,  flavor, stringCategory, price, prodQuantity);
                         break;
                     case 3:
-                        HouseholdItem addHouseholdItem =  new HouseholdItem(productID, productName,  materialType, productCategory, price, prodQuantity);
+                        HouseholdItem addHouseholdItem =  new HouseholdItem(productID, productName,  materialType, stringCategory, price, prodQuantity);
                         break;
                 }
                  System.out.println("*Product Saved*");
@@ -190,9 +201,19 @@ public class Inventory {
         System.out.println("-".repeat(maxWidth));
         System.out.println();
     }
-
-    public void searchProduct() {
-
+    boolean productFound = false;
+    public void searchProduct(String productName) {
+        
+        for(Product searchProduct : products) {
+            if (searchProduct.productName.toLowerCase().contains(productName.toLowerCase())) {
+                System.out.println("Found: " + searchProduct.productName);
+                productFound = true;
+            } 
+            
+        }
+        if (!productFound) {
+                System.out.println("No product found for: " + productName);
+            }
     }
     
 }
